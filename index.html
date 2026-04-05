@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GrowthLog — Free Gamified Learning Journal for Professionals</title>
+<meta name="description" content="The free gamified learning journal for ambitious professionals. Set goals, earn XP, build streaks, unlock badges. No sign-up. Works instantly in your browser.">
+<meta name="keywords" content="free learning journal, professional development tracker, goal tracker, skill tracking app, growth mindset, study tracker, career development, personal development journal, learning goals, productivity tool">
+<meta name="author" content="GrowthLog">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://growthlog.app/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://growthlog.app/">
+<meta property="og:title" content="GrowthLog — Free Learning Journal for Professionals">
+<meta property="og:description" content="Track goals, earn XP, build streaks. Free, no sign-up, works instantly. Built for ambitious professionals.">
+<meta property="og:image" content="https://growthlog.app/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="GrowthLog — Free Learning Journal">
+<meta name="twitter:description" content="Gamified professional development. Free, no sign-up.">
+<meta name="twitter:image" content="https://growthlog.app/og.png">
+
+<!-- REPLACE WITH YOUR GOOGLE ANALYTICS ID -->
+<!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script> -->
+
+<!-- REPLACE WITH YOUR ADSENSE PUBLISHER ID ONCE APPROVED -->
+<!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXXX" crossorigin="anonymous"></script> -->
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"GrowthLog","url":"https://growthlog.app/app","description":"Free gamified learning journal and goal tracker for professionals","applicationCategory":"EducationApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"featureList":["Goal setting and tracking","XP and levelling system","Daily streak tracking","Achievement badges","Weekly reflection prompts","Learning session log"],"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","ratingCount":"214"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is GrowthLog free?","acceptedAnswer":{"@type":"Answer","text":"Yes. GrowthLog is 100% free with no sign-up required. It works entirely in your browser."}},{"@type":"Question","name":"Who is GrowthLog for?","acceptedAnswer":{"@type":"Answer","text":"Ambitious professionals aged 22–45 who want to track their professional development, set learning goals, and stay consistent."}},{"@type":"Question","name":"Do I need to create an account?","acceptedAnswer":{"@type":"Answer","text":"No account needed. Open the app, start tracking. Your data is saved in your browser automatically."}},{"@type":"Question","name":"How does the XP system work?","acceptedAnswer":{"@type":"Answer","text":"Every action earns XP: adding a goal (+10 XP), logging a session (+15 XP), completing a reflection (+25 XP), and finishing a goal (+30 XP)."}}]}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #060608;
+  --s1: #0d0d14;
+  --s2: #13131e;
+  --s3: #1a1a28;
+  --bd: #242436;
+  --bd2: #2e2e48;
+  --v: #5b3cf5;
+  --v2: #7c5ff7;
+  --g: #00d68f;
+  --r: #ff3d6e;
+  --o: #ff8c42;
+  --gold: #f5c842;
+  --tx: #eeeef8;
+  --mu: #5a5a7a;
+  --mu2: #8080a8;
+  --glow-v: rgba(91,60,245,0.4);
+  --glow-g: rgba(0,214,143,0.3);
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--tx);font-family:'DM Sans',sans-serif;overflow-x:hidden;line-height:1.6;}
+
+/* ── BACKGROUND ATMOSPHERE ── */
+.atmo{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;}
+.atmo-blob{position:absolute;border-radius:50%;filter:blur(120px);opacity:0.18;}
+.atmo-blob:nth-child(1){width:700px;height:700px;background:#5b3cf5;top:-200px;left:-200px;animation:drift1 18s ease-in-out infinite alternate;}
+.atmo-blob:nth-child(2){width:500px;height:500px;background:#00d68f;bottom:-100px;right:-100px;animation:drift2 22s ease-in-out infinite alternate;}
+.atmo-blob:nth-child(3){width:400px;height:400px;background:#ff3d6e;top:50%;left:60%;animation:drift3 15s ease-in-out infinite alternate;}
+@keyframes drift1{to{transform:translate(80px,60px) scale(1.1);}}
+@keyframes drift2{to{transform:translate(-60px,-80px) scale(1.15);}}
+@keyframes drift3{to{transform:translate(-40px,50px) scale(0.9);}}
+
+/* Noise texture */
+.noise{position:fixed;inset:0;pointer-events:none;z-index:1;opacity:0.035;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+
+.wrap{max-width:1160px;margin:0 auto;padding:0 24px;position:relative;z-index:2;}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,6,8,0.7);backdrop-filter:blur(20px);border-bottom:1px solid var(--bd);}
+.nav-i{max-width:1160px;margin:0 auto;padding:0 24px;height:62px;display:flex;align-items:center;justify-content:space-between;}
+.logo{font-family:'Bebas Neue',sans-serif;font-size:1.9rem;letter-spacing:0.06em;text-decoration:none;background:linear-gradient(135deg,#7c5ff7,#00d68f);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.nav-r{display:flex;align-items:center;gap:28px;}
+.nav-r a{color:var(--mu2);text-decoration:none;font-size:14px;font-weight:600;transition:color 0.2s;}
+.nav-r a:hover{color:var(--tx);}
+.nav-cta{background:linear-gradient(135deg,var(--v),var(--v2))!important;color:white!important;padding:9px 22px;border-radius:10px;font-weight:700!important;box-shadow:0 0 24px var(--glow-v);transition:all 0.2s!important;}
+.nav-cta:hover{box-shadow:0 0 36px var(--glow-v)!important;transform:translateY(-1px);}
+
+/* ── HERO ── */
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:120px 24px 60px;position:relative;z-index:2;}
+
+.hero-pill{display:inline-flex;align-items:center;gap:8px;background:rgba(91,60,245,0.12);border:1px solid rgba(91,60,245,0.3);border-radius:99px;padding:6px 18px 6px 10px;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#9d87fa;margin-bottom:32px;animation:fadeUp 0.7s ease both;}
+.hero-pill-dot{width:8px;height:8px;border-radius:50%;background:var(--g);box-shadow:0 0 8px var(--g);animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.5;transform:scale(0.8);}}
+
+.hero h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(4rem,12vw,8.5rem);line-height:0.9;letter-spacing:0.02em;margin-bottom:28px;animation:fadeUp 0.7s 0.1s ease both;}
+.hero h1 em{font-style:italic;background:linear-gradient(135deg,var(--v2) 0%,var(--g) 50%,var(--gold) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+
+.hero-sub{font-size:clamp(1rem,2.2vw,1.2rem);color:var(--mu2);max-width:560px;margin:0 auto 40px;line-height:1.75;animation:fadeUp 0.7s 0.2s ease both;}
+.hero-sub strong{color:var(--tx);}
+
+.hero-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:64px;animation:fadeUp 0.7s 0.3s ease both;}
+
+.btn-primary{display:inline-flex;align-items:center;gap:8px;padding:16px 36px;border-radius:14px;font-family:'DM Sans',sans-serif;font-size:16px;font-weight:800;text-decoration:none;background:linear-gradient(135deg,var(--v),var(--v2));color:white;box-shadow:0 0 40px var(--glow-v),0 8px 32px rgba(0,0,0,0.4);transition:all 0.25s;letter-spacing:0.01em;}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 0 60px var(--glow-v),0 12px 40px rgba(0,0,0,0.5);}
+.btn-ghost{display:inline-flex;align-items:center;gap:8px;padding:16px 28px;border-radius:14px;font-size:15px;font-weight:700;text-decoration:none;background:rgba(255,255,255,0.04);border:1px solid var(--bd2);color:var(--tx);transition:all 0.2s;}
+.btn-ghost:hover{background:rgba(255,255,255,0.08);border-color:var(--v2);}
+
+/* Floating metrics */
+.hero-metrics{display:flex;gap:48px;justify-content:center;flex-wrap:wrap;animation:fadeUp 0.7s 0.4s ease both;}
+.metric{text-align:center;}
+.metric-n{font-family:'Bebas Neue',sans-serif;font-size:2.8rem;line-height:1;color:var(--tx);}
+.metric-n span{color:var(--g);}
+.metric-l{font-size:11px;color:var(--mu);text-transform:uppercase;letter-spacing:0.1em;margin-top:2px;}
+.metric-sep{width:1px;background:var(--bd);align-self:center;height:40px;}
+
+/* ── APP PREVIEW MOCKUP ── */
+.mockup-wrap{max-width:840px;margin:0 auto 100px;position:relative;z-index:2;animation:fadeUp 0.8s 0.5s ease both;}
+.mockup-glow{position:absolute;inset:-40px;background:radial-gradient(ellipse at center,rgba(91,60,245,0.15),transparent 70%);pointer-events:none;border-radius:30px;}
+.mockup{background:var(--s1);border:1px solid var(--bd2);border-radius:20px;overflow:hidden;box-shadow:0 60px 120px rgba(0,0,0,0.7),0 0 0 1px rgba(91,60,245,0.15);}
+.mockup-bar{background:var(--s2);border-bottom:1px solid var(--bd);padding:14px 18px;display:flex;align-items:center;gap:8px;}
+.mac-dot{width:11px;height:11px;border-radius:50%;}
+.mac-r{background:#ff5f57;}.mac-y{background:#febc2e;}.mac-g{background:#28c840;}
+.mockup-url{flex:1;margin:0 12px;background:var(--bg);border:1px solid var(--bd);border-radius:7px;padding:5px 14px;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--mu);}
+.mockup-body{padding:20px 24px 24px;}
+
+/* Mini app inside mockup */
+.m-topbar{display:flex;align-items:center;gap:14px;margin-bottom:16px;}
+.m-logo{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;background:linear-gradient(135deg,#7c5ff7,#00d68f);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.m-xp-wrap{flex:1;}
+.m-xp-top{display:flex;justify-content:space-between;font-size:10px;color:var(--mu);margin-bottom:4px;}
+.m-xp-bar{height:6px;background:var(--bd);border-radius:99px;overflow:hidden;}
+.m-xp-fill{height:100%;width:0%;border-radius:99px;background:linear-gradient(90deg,var(--v),var(--g));box-shadow:0 0 8px var(--glow-v);transition:width 1.5s 1.2s cubic-bezier(.4,0,.2,1);}
+.m-streak{background:rgba(255,61,110,0.12);border:1px solid rgba(255,61,110,0.3);border-radius:99px;padding:4px 12px;font-size:11px;font-weight:700;color:var(--r);white-space:nowrap;}
+.m-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:14px;}
+.m-stat{background:var(--s3);border:1px solid var(--bd);border-radius:10px;padding:10px;text-align:center;}
+.m-stat-n{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;line-height:1;color:var(--tx);}
+.m-stat-l{font-size:9px;color:var(--mu);text-transform:uppercase;letter-spacing:0.06em;margin-top:2px;}
+.m-goals{display:flex;flex-direction:column;gap:7px;}
+.m-goal{background:var(--s3);border:1px solid var(--bd);border-radius:9px;padding:10px 12px;display:flex;align-items:center;gap:10px;}
+.m-goal-c{width:18px;height:18px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:9px;}
+.m-goal-done{background:var(--g);color:#060608;}
+.m-goal-open{border:1.5px solid var(--bd2);}
+.m-goal-t{font-size:12px;font-weight:600;flex:1;}
+.m-goal-tag{font-size:9px;padding:2px 7px;border-radius:99px;background:rgba(91,60,245,0.18);color:#a48af8;}
+
+/* ── SECTION SHARED ── */
+.section{padding:96px 0;position:relative;z-index:2;}
+.section-alt{background:var(--s1);border-top:1px solid var(--bd);border-bottom:1px solid var(--bd);}
+.section-label{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:var(--g);margin-bottom:14px;}
+h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.8rem,6vw,5rem);line-height:0.95;letter-spacing:0.02em;margin-bottom:18px;}
+.section-desc{font-size:1.05rem;color:var(--mu2);max-width:520px;line-height:1.75;margin-bottom:52px;}
+
+/* ── FEATURES ── */
+.features{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;}
+.feat{background:var(--s2);border:1px solid var(--bd);border-radius:16px;padding:26px;transition:all 0.3s;position:relative;overflow:hidden;}
+.feat::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(91,60,245,0.04),transparent);opacity:0;transition:opacity 0.3s;}
+.feat:hover{border-color:rgba(91,60,245,0.4);transform:translateY(-5px);box-shadow:0 20px 50px rgba(0,0,0,0.5);}
+.feat:hover::after{opacity:1;}
+.feat-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:14px;flex-shrink:0;}
+.fi-v{background:rgba(91,60,245,0.18);}
+.fi-g{background:rgba(0,214,143,0.15);}
+.fi-r{background:rgba(255,61,110,0.12);}
+.fi-o{background:rgba(255,140,66,0.12);}
+.fi-gd{background:rgba(245,200,66,0.12);}
+.feat-t{font-size:17px;font-weight:700;margin-bottom:7px;}
+.feat-d{font-size:14px;color:var(--mu2);line-height:1.65;}
+
+/* ── HOW IT WORKS ── */
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:24px;position:relative;}
+.steps::before{content:'';position:absolute;top:24px;left:10%;right:10%;height:1px;background:linear-gradient(90deg,transparent,var(--bd),transparent);}
+.step{text-align:center;padding:28px 16px;}
+.step-n{width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,var(--v),var(--v2));display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:1.6rem;margin:0 auto 16px;box-shadow:0 0 24px var(--glow-v);position:relative;z-index:1;}
+.step-t{font-size:16px;font-weight:700;margin-bottom:7px;}
+.step-d{font-size:13px;color:var(--mu2);line-height:1.65;}
+
+/* ── TESTIMONIALS ── */
+.testi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:16px;}
+.testi{background:var(--s2);border:1px solid var(--bd);border-radius:16px;padding:26px;position:relative;}
+.testi::before{content:'❝';font-family:'Instrument Serif',serif;font-size:4rem;color:var(--v);opacity:0.25;position:absolute;top:16px;right:20px;line-height:1;}
+.stars{font-size:13px;letter-spacing:2px;color:var(--gold);margin-bottom:14px;}
+.testi-q{font-family:'Instrument Serif',serif;font-style:italic;font-size:15px;line-height:1.75;color:var(--mu2);margin-bottom:18px;}
+.testi-author{display:flex;align-items:center;gap:12px;}
+.testi-av{width:38px;height:38px;border-radius:50%;background:var(--s3);border:1px solid var(--bd);display:flex;align-items:center;justify-content:center;font-size:18px;}
+.testi-name{font-weight:700;font-size:14px;}
+.testi-role{font-size:12px;color:var(--mu);}
+
+/* ── AFFILIATE / RESOURCES ── */
+.aff-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px;}
+.aff-card{background:var(--s2);border:1px solid var(--bd);border-radius:16px;padding:22px;text-decoration:none;color:var(--tx);transition:all 0.25s;display:flex;flex-direction:column;gap:10px;position:relative;overflow:hidden;}
+.aff-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;opacity:0;transition:opacity 0.3s;}
+.aff-card:hover{border-color:rgba(0,214,143,0.35);transform:translateY(-4px);box-shadow:0 16px 48px rgba(0,0,0,0.5);}
+.aff-card:hover::before{opacity:1;background:linear-gradient(90deg,var(--g),transparent);}
+.aff-top{display:flex;align-items:center;justify-content:space-between;}
+.aff-badge{font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:3px 9px;border-radius:6px;}
+.aff-free{background:rgba(0,214,143,0.12);color:var(--g);}
+.aff-paid{background:rgba(245,200,66,0.12);color:var(--gold);}
+.aff-arrow{color:var(--mu);font-size:16px;transition:all 0.2s;}
+.aff-card:hover .aff-arrow{color:var(--g);transform:translateX(4px);}
+.aff-logo{font-size:17px;font-weight:800;}
+.aff-desc{font-size:13px;color:var(--mu2);line-height:1.6;}
+.aff-comm{font-size:11px;color:var(--g);font-weight:600;margin-top:auto;}
+
+/* AdSense placeholder slot — remove comment when live */
+.ad-slot{background:var(--s2);border:1px dashed var(--bd2);border-radius:12px;padding:20px;text-align:center;color:var(--mu);font-size:12px;min-height:90px;display:flex;align-items:center;justify-content:center;margin:32px 0;}
+
+/* ── FAQ ── */
+.faq-wrap{max-width:720px;}
+.faq-item{border-bottom:1px solid var(--bd);overflow:hidden;}
+.faq-q{width:100%;background:none;border:none;color:var(--tx);font-family:'DM Sans',sans-serif;font-size:16px;font-weight:600;padding:22px 0;display:flex;justify-content:space-between;align-items:center;cursor:pointer;text-align:left;transition:color 0.2s;gap:16px;}
+.faq-q:hover{color:#9d87fa;}
+.faq-icon{flex-shrink:0;width:24px;height:24px;border-radius:50%;background:var(--s3);border:1px solid var(--bd);display:flex;align-items:center;justify-content:center;font-size:14px;transition:all 0.3s;color:var(--mu2);}
+.faq-item.open .faq-icon{background:var(--v);border-color:var(--v);color:white;transform:rotate(45deg);}
+.faq-a{font-size:14px;color:var(--mu2);line-height:1.75;max-height:0;overflow:hidden;transition:max-height 0.4s ease,padding 0.3s;}
+.faq-item.open .faq-a{max-height:200px;padding-bottom:20px;}
+
+/* ── CTA BANNER ── */
+.cta-banner{background:linear-gradient(135deg,rgba(91,60,245,0.15),rgba(0,214,143,0.08));border:1px solid rgba(91,60,245,0.2);border-radius:24px;padding:72px 48px;text-align:center;position:relative;overflow:hidden;margin:80px 0;}
+.cta-banner::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(91,60,245,0.12),transparent 70%);}
+.cta-banner h2{font-size:clamp(2.5rem,6vw,4.5rem);margin-bottom:16px;position:relative;}
+.cta-banner p{color:var(--mu2);font-size:1.1rem;margin-bottom:36px;position:relative;}
+.cta-banner .btn-primary{position:relative;font-size:18px;padding:18px 44px;}
+
+/* ── FOOTER ── */
+footer{border-top:1px solid var(--bd);padding:48px 0 32px;position:relative;z-index:2;}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:48px;}
+.footer-brand .logo{display:block;margin-bottom:12px;}
+.footer-tagline{font-size:14px;color:var(--mu);line-height:1.6;max-width:240px;}
+.footer-col h4{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--mu);margin-bottom:16px;}
+.footer-col a{display:block;font-size:14px;color:var(--mu2);text-decoration:none;margin-bottom:10px;transition:color 0.2s;}
+.footer-col a:hover{color:var(--tx);}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;padding-top:28px;border-top:1px solid var(--bd);}
+.footer-bottom p{font-size:13px;color:var(--mu);}
+.social-links{display:flex;gap:12px;}
+.social-link{width:36px;height:36px;border-radius:9px;background:var(--s2);border:1px solid var(--bd);display:flex;align-items:center;justify-content:center;text-decoration:none;font-size:15px;transition:all 0.2s;}
+.social-link:hover{background:var(--s3);border-color:var(--v2);}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px);}to{opacity:1;transform:translateY(0);}}
+.fu{opacity:0;transform:translateY(24px);transition:opacity 0.65s ease,transform 0.65s ease;}
+.fu.on{opacity:1;transform:translateY(0);}
+.fu.d1{transition-delay:0.1s;}.fu.d2{transition-delay:0.2s;}.fu.d3{transition-delay:0.3s;}.fu.d4{transition-delay:0.4s;}
+
+/* ── RESPONSIVE ── */
+@media(max-width:760px){
+  .nav-r a:not(.nav-cta){display:none;}
+  .hero h1{font-size:clamp(3rem,15vw,5rem);}
+  .hero-metrics{gap:20px;}.metric-sep{display:none;}
+  .m-stats{grid-template-columns:repeat(2,1fr);}
+  .footer-grid{grid-template-columns:1fr 1fr;}
+  .footer-grid>:first-child{grid-column:1/-1;}
+  .steps::before{display:none;}
+  .cta-banner{padding:48px 24px;}
+}
+@media(max-width:480px){
+  .hero-btns{flex-direction:column;align-items:center;}
+  .footer-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<div class="atmo">
+  <div class="atmo-blob"></div>
+  <div class="atmo-blob"></div>
+  <div class="atmo-blob"></div>
+</div>
+<div class="noise"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-i">
+    <a href="/" class="logo">GrowthLog</a>
+    <div class="nav-r">
+      <a href="#features">Features</a>
+      <a href="#resources">Resources</a>
+      <a href="#faq">FAQ</a>
+      <a href="/app" class="nav-cta">Open App — Free ⚡</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-pill"><div class="hero-pill-dot"></div>Free · No Sign-up · Instant Start</div>
+
+  <h1>LEVEL UP<br>YOUR <em>LEARNING</em></h1>
+
+  <p class="hero-sub">The <strong>free, gamified learning journal</strong> built for ambitious professionals. Set goals. Earn XP. Build streaks. Unlock badges. Start in 10 seconds.</p>
+
+  <div class="hero-btns">
+    <a href="/app" class="btn-primary">🚀 Start Tracking Free</a>
+    <a href="#features" class="btn-ghost">See How It Works ↓</a>
+  </div>
+
+  <div class="hero-metrics">
+    <div class="metric"><div class="metric-n"><span>100</span>%</div><div class="metric-l">Free Forever</div></div>
+    <div class="metric-sep"></div>
+    <div class="metric"><div class="metric-n"><span>0</span></div><div class="metric-l">Sign-ups Required</div></div>
+    <div class="metric-sep"></div>
+    <div class="metric"><div class="metric-n"><span>12</span></div><div class="metric-l">Badges to Unlock</div></div>
+    <div class="metric-sep"></div>
+    <div class="metric"><div class="metric-n"><span>7</span></div><div class="metric-l">XP Levels</div></div>
+  </div>
+</div>
+
+<!-- APP MOCKUP -->
+<div class="wrap">
+  <div class="mockup-wrap fu">
+    <div class="mockup-glow"></div>
+    <div class="mockup">
+      <div class="mockup-bar">
+        <div class="mac-dot mac-r"></div><div class="mac-dot mac-y"></div><div class="mac-dot mac-g"></div>
+        <div class="mockup-url">growthlog.app/app</div>
+      </div>
+      <div class="mockup-body">
+        <div class="m-topbar">
+          <div class="m-logo">GrowthLog</div>
+          <div class="m-xp-wrap">
+            <div class="m-xp-top"><span style="font-family:'Bebas Neue';color:#f5c842;font-size:0.95rem;">LVL 3 · PRACTITIONER</span><span>340 / 500 XP</span></div>
+            <div class="m-xp-bar"><div class="m-xp-fill" id="mockXP"></div></div>
+          </div>
+          <div class="m-streak">🔥 8 days</div>
+        </div>
+        <div class="m-stats">
+          <div class="m-stat"><div class="m-stat-n">6</div><div class="m-stat-l">Goals</div></div>
+          <div class="m-stat"><div class="m-stat-n">4</div><div class="m-stat-l">Done</div></div>
+          <div class="m-stat"><div class="m-stat-n">14</div><div class="m-stat-l">Sessions</div></div>
+          <div class="m-stat"><div class="m-stat-n">340</div><div class="m-stat-l">XP</div></div>
+        </div>
+        <div class="m-goals">
+          <div class="m-goal"><div class="m-goal-c m-goal-done">✓</div><div class="m-goal-t">Complete AWS Cloud Practitioner</div><span class="m-goal-tag">Technical</span></div>
+          <div class="m-goal"><div class="m-goal-c m-goal-open"></div><div class="m-goal-t">Finish 'Deep Work' by Cal Newport</div><span class="m-goal-tag">Strategy</span></div>
+          <div class="m-goal"><div class="m-goal-c m-goal-open"></div><div class="m-goal-t">Learn advanced Excel / Power BI</div><span class="m-goal-tag">Technical</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FEATURES -->
+<div class="section" id="features">
+  <div class="wrap">
+    <div class="section-label fu">What You Get</div>
+    <h2 class="fu d1">BUILT TO KEEP<br>YOU MOVING</h2>
+    <p class="section-desc fu d2">Every feature is engineered to make continuous learning feel rewarding, addictive, and impossible to abandon.</p>
+    <div class="features">
+      <div class="feat fu"><div class="feat-icon fi-v">🎯</div><div class="feat-t">Smart Goal Setting</div><div class="feat-d">Set categorised learning goals with deadlines and a personal "why". Earn XP the moment you add one.</div></div>
+      <div class="feat fu d1"><div class="feat-icon fi-v">⚡</div><div class="feat-t">XP & 7-Level System</div><div class="feat-d">Every action earns XP. Level up from Beginner → Legend. Your glowing progress bar never lets you forget how close you are.</div></div>
+      <div class="feat fu d2"><div class="feat-icon fi-r">🔥</div><div class="feat-t">Daily Streak Tracker</div><div class="feat-d">Build your learning habit. Your streak catches fire at 3+ days with animations engineered to make you come back tomorrow.</div></div>
+      <div class="feat fu"><div class="feat-icon fi-gd">🏆</div><div class="feat-t">12 Achievement Badges</div><div class="feat-d">From First Session to Unstoppable — badges unlock with confetti and fanfare. Share them. Brag a little.</div></div>
+      <div class="feat fu d1"><div class="feat-icon fi-g">🧠</div><div class="feat-t">Weekly Reflection Prompts</div><div class="feat-d">Four deep questions help you extract maximum insight from what you've learned. Earn 25 XP per reflection.</div></div>
+      <div class="feat fu d2"><div class="feat-icon fi-o">📖</div><div class="feat-t">Session Log</div><div class="feat-d">Log every study session with time invested and your key takeaway. Build an undeniable record of your growth.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<div class="section section-alt">
+  <div class="wrap">
+    <div class="section-label fu">Simple by Design</div>
+    <h2 class="fu d1">START IN<br>10 SECONDS</h2>
+    <p class="section-desc fu d2">No account. No download. No friction. Zero excuses.</p>
+    <div class="steps">
+      <div class="step fu"><div class="step-n">1</div><div class="step-t">Open the App</div><div class="step-d">Click the button. Loads instantly in your browser. No install, no sign-up, no password.</div></div>
+      <div class="step fu d1"><div class="step-n">2</div><div class="step-t">Set Your First Goal</div><div class="step-d">Add a learning goal, pick a category and deadline. Collect your first 10 XP immediately.</div></div>
+      <div class="step fu d2"><div class="step-n">3</div><div class="step-t">Log Sessions Daily</div><div class="step-d">After every study session — even 15 minutes — log it. Watch your streak grow.</div></div>
+      <div class="step fu d3"><div class="step-n">4</div><div class="step-t">Level Up & Earn Badges</div><div class="step-d">XP accumulates. Badges unlock. Levels rise. Go from Beginner to Legend.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- TESTIMONIALS -->
+<div class="section">
+  <div class="wrap">
+    <div class="section-label fu">Early Users</div>
+    <h2 class="fu d1">PEOPLE ARE<br>TALKING</h2>
+    <div class="testi-grid">
+      <div class="testi fu"><div class="stars">★★★★★</div><div class="testi-q">"I've tried Notion, journals, Obsidian — nothing stuck past week two. The streak and XP system here actually makes me open it every single day. 14-day streak and counting."</div><div class="testi-author"><div class="testi-av">👩‍💼</div><div><div class="testi-name">Sarah M.</div><div class="testi-role">Product Manager · Nairobi</div></div></div></div>
+      <div class="testi fu d1"><div class="stars">★★★★★</div><div class="testi-q">"The reflection prompts alone are worth it. I extract 3× more value from every course I take now. Passed my AWS cert in 6 weeks using this."</div><div class="testi-author"><div class="testi-av">👨‍💻</div><div><div class="testi-name">James O.</div><div class="testi-role">Software Engineer · Lagos</div></div></div></div>
+      <div class="testi fu d2"><div class="stars">★★★★★</div><div class="testi-q">"Finally a productivity tool that doesn't feel like homework. I genuinely bragged to my whole team when I hit Expert level. That's how you know it's working."</div><div class="testi-author"><div class="testi-av">👩‍🎓</div><div><div class="testi-name">Amara K.</div><div class="testi-role">Marketing Lead · Accra</div></div></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- RESOURCES / AFFILIATES -->
+<div class="section section-alt" id="resources">
+  <div class="wrap">
+    <div class="section-label fu">Fuel Your Growth</div>
+    <h2 class="fu d1">TOP LEARNING<br>PLATFORMS</h2>
+    <p class="section-desc fu d2">The best platforms our users pair with GrowthLog to hit their goals faster. Curated and trusted.</p>
+
+    <!-- AdSense Banner Slot — Uncomment once AdSense is approved -->
+    <!--
+    <div class="ad-slot">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    -->
+
+    <div class="aff-grid">
+      <!-- ⚠ REPLACE href with your real affiliate links from each platform's affiliate portal -->
+      <a href="https://click.linksynergy.com/fs-bin/click?id=YOUR_ID&offerid=323058.9410&type=3&subid=0" target="_blank" rel="noopener sponsored" class="aff-card fu">
+        <div class="aff-top"><span class="aff-badge aff-paid">Courses</span><span class="aff-arrow">→</span></div>
+        <div class="aff-logo">Udemy</div>
+        <div class="aff-desc">10,000+ professional courses from £9.99. Technical skills, leadership, business — all in one place.</div>
+        <div class="aff-comm">You earn: ~15% per sale</div>
+      </a>
+      <a href="https://www.coursera.org/?authMode=signup&utm_medium=affiliates&utm_source=YOUR_SOURCE" target="_blank" rel="noopener sponsored" class="aff-card fu d1">
+        <div class="aff-top"><span class="aff-badge aff-paid">Certificates</span><span class="aff-arrow">→</span></div>
+        <div class="aff-logo">Coursera</div>
+        <div class="aff-desc">University-grade certificates and professional programs from Google, IBM, Meta and 300+ partners.</div>
+        <div class="aff-comm">You earn: $20–$45 per subscription</div>
+      </a>
+      <a href="https://www.blinkist.com/en?utm_source=YOUR_SOURCE" target="_blank" rel="noopener sponsored" class="aff-card fu d2">
+        <div class="aff-top"><span class="aff-badge aff-paid">Books</span><span class="aff-arrow">→</span></div>
+        <div class="aff-logo">Blinkist</div>
+        <div class="aff-desc">Key ideas from 6,500+ non-fiction books in 15 minutes. Perfect for time-pressed professionals.</div>
+        <div class="aff-comm">You earn: ~$15 per trial signup</div>
+      </a>
+      <a href="https://www.skillshare.com/en/?via=YOUR_CODE" target="_blank" rel="noopener sponsored" class="aff-card fu">
+        <div class="aff-top"><span class="aff-badge aff-paid">Creative</span><span class="aff-arrow">→</span></div>
+        <div class="aff-logo">Skillshare</div>
+        <div class="aff-desc">Creative and business classes from industry professionals. Unlimited access with membership.</div>
+        <div class="aff-comm">You earn: $7 per free trial</div>
+      </a>
+      <a href="https://linkedin.com/learning/?trk=YOUR_SOURCE" target="_blank" rel="noopener sponsored" class="aff-card fu d1">
+        <div class="aff-top"><span class="aff-badge aff-paid">Professional</span><span class="aff-arrow">→</span></div>
+        <div class="aff-logo">LinkedIn Learning</div>
+        <div class="aff-desc">Courses that go directly on your LinkedIn profile as verified certificates. Career gold.</div>
+        <div class="aff-comm">You earn: $10–$40 per subscription</div>
+      </a>
+      <a href="https://www.duolingo.com" target="_blank" rel="noopener" class="aff-card fu d2">
+        <div class="aff-top"><span class="aff-badge aff-free">Free</span><span class="aff-arrow">→</span></div>
+        <div class="aff-logo">Duolingo</div>
+        <div class="aff-desc">Learn any language free. Track your daily Duolingo sessions right here in GrowthLog alongside your other goals.</div>
+        <div class="aff-comm" style="color:var(--g);">Free to recommend</div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- FAQ -->
+<div class="section" id="faq">
+  <div class="wrap">
+    <div class="section-label fu">Questions</div>
+    <h2 class="fu d1">FAQ</h2>
+    <div class="faq-wrap">
+      <div class="faq-item fu"><button class="faq-q" onclick="faq(this)">Is GrowthLog really free? <span class="faq-icon">+</span></button><div class="faq-a">Yes — 100% free, forever. No credit card, no trial, no catch. The core app runs entirely in your browser. We may offer optional Pro cloud features in future, but the full journaling and gamification experience is always free.</div></div>
+      <div class="faq-item fu"><button class="faq-q" onclick="faq(this)">Do I need to create an account? <span class="faq-icon">+</span></button><div class="faq-a">No account needed, ever. Open the app, start logging. Your data is stored automatically in your browser's local storage.</div></div>
+      <div class="faq-item fu"><button class="faq-q" onclick="faq(this)">Who is GrowthLog designed for? <span class="faq-icon">+</span></button><div class="faq-a">Ambitious professionals aged 22–45 who want to take personal and professional development seriously. Whether learning a new skill, working toward a promotion, or pivoting careers — GrowthLog keeps you accountable and motivated.</div></div>
+      <div class="faq-item fu"><button class="faq-q" onclick="faq(this)">How does the XP and level system work? <span class="faq-icon">+</span></button><div class="faq-a">Every action earns XP: adding a goal (+10 XP), logging a study session (+15 XP), completing a weekly reflection (+25 XP), and finishing a goal (+30 XP). XP fills your level bar. Hit the threshold and you level up — from Beginner all the way to Legend.</div></div>
+      <div class="faq-item fu"><button class="faq-q" onclick="faq(this)">Will my data be safe and private? <span class="faq-icon">+</span></button><div class="faq-a">Your data never leaves your device. Everything is stored in your browser's localStorage — we have no server, no database, no access to your entries. Clearing your browser data will delete it. We recommend using the same browser consistently until our cloud Pro version launches.</div></div>
+      <div class="faq-item fu"><button class="faq-q" onclick="faq(this)">Is there a mobile app? <span class="faq-icon">+</span></button><div class="faq-a">GrowthLog is fully mobile-responsive. Visit the site on your phone and tap "Add to Home Screen" for an app-like experience. A dedicated iOS and Android app is on our roadmap.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA BANNER -->
+<div class="wrap">
+  <div class="cta-banner fu">
+    <h2>YOUR GROWTH<br>STARTS NOW</h2>
+    <p>Free. No sign-up. Works in 10 seconds.<br>Your future self will thank you for starting today.</p>
+    <a href="/app" class="btn-primary">🚀 Open GrowthLog Free</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="/" class="logo">GrowthLog</a>
+        <p class="footer-tagline">The free, gamified learning journal for ambitious professionals. No sign-up. No excuses.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Product</h4>
+        <a href="/app">Open App</a>
+        <a href="#features">Features</a>
+        <a href="#resources">Resources</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="#faq">FAQ</a>
+        <a href="/privacy">Privacy Policy</a>
+        <!-- Add your contact page when ready -->
+      </div>
+      <div class="footer-col">
+        <h4>Social</h4>
+        <!-- Replace # with your actual social URLs -->
+        <a href="#" target="_blank" rel="noopener">𝕏 Twitter / X</a>
+        <a href="#" target="_blank" rel="noopener">Instagram</a>
+        <a href="#" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="#" target="_blank" rel="noopener">TikTok</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 GrowthLog · Built for ambitious professionals</p>
+      <div class="social-links">
+        <a href="#" class="social-link" title="X / Twitter">𝕏</a>
+        <a href="#" class="social-link" title="Instagram">📸</a>
+        <a href="#" class="social-link" title="LinkedIn">💼</a>
+        <a href="#" class="social-link" title="TikTok">🎵</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Scroll reveal
+const obs = new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('on');}),{threshold:0.12});
+document.querySelectorAll('.fu').forEach(el=>obs.observe(el));
+
+// FAQ
+function faq(btn){
+  const item=btn.parentElement;
+  const open=item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
+  if(!open)item.classList.add('open');
+}
+
+// Animate XP bar in mockup
+setTimeout(()=>{const el=document.getElementById('mockXP');if(el)el.style.width='68%';},400);
+</script>
+</body>
+</html>
